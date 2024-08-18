@@ -1,9 +1,9 @@
 module github.com/Abishnoi69/Auto-Approve-Bot
 
-go 1.22.6
+go 1.23.0
 
 require (
-	github.com/PaulSonOfLars/gotgbot/v2 v2.0.0-rc.28
+	github.com/PaulSonOfLars/gotgbot/v2 v2.0.0-rc.29
 	github.com/go-faster/errors v0.7.1
 	github.com/joho/godotenv v1.5.1
 	go.mongodb.org/mongo-driver v1.16.1
