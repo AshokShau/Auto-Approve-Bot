@@ -1,12 +1,12 @@
 /*
- * Copyright © 2024 Abishnoi69 <github.com/Abishnoi69>
+ * Copyright © 2024 AshokShau <github.com/AshokShau>
  */
 
 package modules
 
 import (
 	"fmt"
-	"github.com/Abishnoi69/Auto-Approve-Bot/Telegram/config"
+	"github.com/AshokShau/Auto-Approve-Bot/Telegram/config"
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext/handlers"

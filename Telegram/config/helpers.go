@@ -1,5 +1,5 @@
 /*
- * Copyright © 2024 Abishnoi69 <github.com/Abishnoi69>
+ * Copyright © 2024 AshokShau <github.com/AshokShau>
  */
 
 package config

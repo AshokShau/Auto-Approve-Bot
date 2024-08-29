@@ -1,5 +1,5 @@
 /*
- * Copyright © 2024 Abishnoi69 <github.com/Abishnoi69>
+ * Copyright © 2024 AshokShau <github.com/AshokShau>
  */
 
 package api
@@ -7,7 +7,7 @@ package api
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Abishnoi69/Auto-Approve-Bot/Telegram/modules"
+	"github.com/AshokShau/Auto-Approve-Bot/Telegram/modules"
 	"io"
 	"net/http"
 	"strings"

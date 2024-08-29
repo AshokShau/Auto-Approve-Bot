@@ -1,12 +1,12 @@
 /*
- * Copyright © 2024 Abishnoi69 <github.com/Abishnoi69>
+ * Copyright © 2024 AshokShau <github.com/AshokShau>
  */
 
 package modules
 
 import (
 	"fmt"
-	"github.com/Abishnoi69/Auto-Approve-Bot/Telegram/db"
+	"github.com/AshokShau/Auto-Approve-Bot/Telegram/db"
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
 	"github.com/go-faster/errors"
@@ -33,7 +33,7 @@ func start(b *gotgbot.Bot, ctx *ext.Context) error {
 				},
 				{
 					Text: "Help & Commands",
-					Url:  "https://abishnoi69.github.io/Auto-Approve-Bot/#usage",
+					Url:  "https://AshokShau.github.io/Auto-Approve-Bot/#usage",
 				},
 			},
 		},
