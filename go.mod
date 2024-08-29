@@ -1,4 +1,4 @@
-module github.com/Abishnoi69/Auto-Approve-Bot
+module github.com/AshokShau/Auto-Approve-Bot
 
 go 1.23.0
 

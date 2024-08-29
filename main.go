@@ -1,12 +1,12 @@
 /*
- * Copyright © 2024 Abishnoi69 <github.com/Abishnoi69>
+ * Copyright © 2024 AshokShau <github.com/AshokShau>
  */
 
 package main
 
 import (
-	"github.com/Abishnoi69/Auto-Approve-Bot/Telegram/config"
-	"github.com/Abishnoi69/Auto-Approve-Bot/Telegram/modules"
+	"github.com/AshokShau/Auto-Approve-Bot/Telegram/config"
+	"github.com/AshokShau/Auto-Approve-Bot/Telegram/modules"
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"log"
 	"time"

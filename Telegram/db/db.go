@@ -1,12 +1,12 @@
 /*
- * Copyright © 2024 Abishnoi69 <github.com/Abishnoi69>
+ * Copyright © 2024 AshokShau <github.com/AshokShau>
  */
 
 package db
 
 import (
 	"context"
-	"github.com/Abishnoi69/Auto-Approve-Bot/Telegram/config"
+	"github.com/AshokShau/Auto-Approve-Bot/Telegram/config"
 
 	"github.com/go-faster/errors"
 	"go.mongodb.org/mongo-driver/bson"

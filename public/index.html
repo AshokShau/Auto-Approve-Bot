@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright © 2024 Abishnoi69 <github.com/Abishnoi69>
+  ~ Copyright © 2024 AshokShau <github.com/AshokShau>
   -->
 
 <!DOCTYPE html>
@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Auto Approve Bot</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <style>
@@ -85,20 +85,17 @@
             align-self: center;
         }
 
-        .spark:nth-child(even)
-        {
+        .spark:nth-child(even) {
             background: transparent;
             border: 1px solid white;
         }
 
         @keyframes animate-spark {
-            0%
-            {
+            0% {
                 opacity: 1;
                 transform: translate(0, 0);
             }
-            100%
-            {
+            100% {
                 opacity: 0;
                 transform: translate(var(--x), var(--y));
             }
@@ -110,45 +107,55 @@
 <div class="container mx-auto py-8">
     <div class="flex justify-between items-center">
         <div class="space-y-4 text-3xl h-max shadow-2xl rounded-lg font-bold text-yellow-400 hover:bg-gray-700">
-            <a href="https://github.com/Abishnoi69/Auto-Approve-Bot" target="_blank">
+            <a href="https://github.com/AshokShau/Auto-Approve-Bot" target="_blank">
                 <span>Auto Approve</span>
             </a>
         </div>
         <div>
             <a href="#setup">
-                <button type="button"
-                        class="btn-help shadow-2xl rounded-md px-4 py-2 bg-blue-600 font-medium text-white hover:bg-blue-500">
-                    Guide</button></a>
+                <button class="btn-help shadow-2xl rounded-md px-4 py-2 bg-blue-600 font-medium text-white hover:bg-blue-500"
+                        type="button">
+                    Guide
+                </button>
+            </a>
             <a href="tg://resolve?domain=FallenAssociation">
-                <button type="button"
-                        class="btn-contact shadow-2xl rounded-md px-4 py-2 bg-green-600 text-white font-medium hover:bg-green-500">
-                    Contact</button></a>
-            <a href="https://abishnoi69.github.io/Auto-Approve-Bot/">
-                <button type="button"
-                        class="btn-contact shadow-2xl rounded-md px-4 py-2 bg-green-600 text-white font-medium hover:bg-green-500">
-                    More</button></a>
+                <button class="btn-contact shadow-2xl rounded-md px-4 py-2 bg-green-600 text-white font-medium hover:bg-green-500"
+                        type="button">
+                    Contact
+                </button>
+            </a>
+            <a href="https://AshokShau.github.io/Auto-Approve-Bot/">
+                <button class="btn-contact shadow-2xl rounded-md px-4 py-2 bg-green-600 text-white font-medium hover:bg-green-500"
+                        type="button">
+                    More
+                </button>
+            </a>
 
         </div>
     </div>
-    <div id="mainContent" class="main-content mt-8">
+    <div class="main-content mt-8" id="mainContent">
         <h1 class="text-2xl font-bold text-yellow-400 mb-4">Connect a New Bot</h1>
-        <div id="helpMessage" class="absolute mt-10 hidden bg-gray-700 text-white text-sm rounded py-2 px-4 z-10">
-            Go to <a href="tg://resolve?domain=botFather" class="text-blue-300">@botFather</a> and create a /newbot to get this.
+        <div class="absolute mt-10 hidden bg-gray-700 text-white text-sm rounded py-2 px-4 z-10" id="helpMessage">
+            Go to <a class="text-blue-300" href="tg://resolve?domain=botFather">@botFather</a> and create a /newbot to
+            get this.
         </div>
         <div class="flex flex-col space-y-4">
             <div class="relative flex items-center">
-                <label for="botToken" class="text-xl mr-2">Enter your Bot Token</label>
-                <button id="helpButton" class="text-white rounded-full p-2 hover:bg-gray-700 focus:outline-none">ⓘ</button>
+                <label class="text-xl mr-2" for="botToken">Enter your Bot Token</label>
+                <button class="text-white rounded-full p-2 hover:bg-gray-700 focus:outline-none" id="helpButton">ⓘ
+                </button>
             </div>
 
             <div class="relative">
-                <span id="errorMessage" class="error-message text-sm mb-2 invisible"></span>
-                <input type="text" id="botToken"
-                       class="rounded-md px-4 py-2 bg-gray-800 text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400 w-full">
+                <span class="error-message text-sm mb-2 invisible" id="errorMessage"></span>
+                <input class="rounded-md px-4 py-2 bg-gray-800 text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400 w-full" id="botToken"
+                       type="text">
             </div>
-            <div id="button-container" class="flex flex-col space-y-4">
-                <button type="button" id="connectButton"
-                        class="btn-connect rounded-md shadow-2xl py-2 bg-blue-600 font-semibold text-white hover:bg-blue-500 text-gray-300">Connect</button>
+            <div class="flex flex-col space-y-4" id="button-container">
+                <button class="btn-connect rounded-md shadow-2xl py-2 bg-blue-600 font-semibold text-white hover:bg-blue-500 text-gray-300" id="connectButton"
+                        type="button">
+                    Connect
+                </button>
             </div>
         </div>
     </div>
@@ -157,9 +164,12 @@
         <h2 class="text-xl font-mono text-yellow-400 mb-4 hover:underline focus:underline" id="setup">Setup</h2>
         <ol class="list-decimal ml-6 mb-6">
             <li class="mb-2">
-                Go to <a href="tg://resolve?domain=botfather" target="_blank" class="text-blue-400 hover:text-blue-300">BotFather</a> and create a new bot or choose an existing one.
+                Go to <a class="text-blue-400 hover:text-blue-300" href="tg://resolve?domain=botfather" target="_blank">BotFather</a>
+                and create a new bot or choose an existing one.
             </li>
-            <li class="mb-2">Copy the bot token and paste it into the <a href="#botToken" class="text-blue-400">input</a> above.</li>
+            <li class="mb-2">Copy the bot token and paste it into the <a class="text-blue-400"
+                                                                         href="#botToken">input</a> above.
+            </li>
             <li class="mb-2">Click connect and your bot is all set up.</li>
         </ol>
 
@@ -181,7 +191,7 @@
     const buttonContainer = document.getElementById('button-container');
 
     connectButton.addEventListener('click', async () => {
-        for (let i = 0; i<30; i++) {
+        for (let i = 0; i < 30; i++) {
             let spark = document.createElement('i');
             spark.classList.add('spark')
 
@@ -204,7 +214,7 @@
             buttonContainer.appendChild(spark);
 
             // remove sparks after 2s
-            setTimeout(function() {
+            setTimeout(function () {
                 spark.remove();
             }, 2000);
         }
@@ -282,12 +292,12 @@
         }
     });
 
-    document.getElementById('helpButton').addEventListener('click', function() {
+    document.getElementById('helpButton').addEventListener('click', function () {
         const helpMessage = document.getElementById('helpMessage');
         helpMessage.classList.toggle('hidden');
     });
 
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         const helpButton = document.getElementById('helpButton');
         const helpMessage = document.getElementById('helpMessage');
         if (!helpButton.contains(event.target) && !helpMessage.contains(event.target)) {
