@@ -51,8 +51,8 @@ func autoApprove(b *gotgbot.Bot, ctx *ext.Context) error {
 		},
 	}
 
-	approveStats, _ := db.IsDisabledChat(msg.Chat.Id)
-	text := fmt.Sprintf("Auto approve is currently %v\nDo you want to change it?", approveStats)
+	enabled, _ := db.IsApproveEnabled(msg.Chat.Id)
+	text := fmt.Sprintf("Auto approve is currently %v\nDo you want to change it?", enabled)
 	_, err := b.SendMessage(ctx.EffectiveChat.Id, text, &gotgbot.SendMessageOpts{ReplyMarkup: button})
 	if err != nil {
 		return fmt.Errorf("[autoApprove] failed to send auto approve message %v", err)

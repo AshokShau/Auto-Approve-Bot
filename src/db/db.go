@@ -176,28 +176,28 @@ func GetUserCount() (int, error) {
 	return int(count), nil
 }
 
-// IsDisabledChat Checks if a chat is disabled
-func IsDisabledChat(chatID int64) (bool, error) {
+// IsApproveEnabled Checks if a chat is enabled for auto-approve
+func IsApproveEnabled(chatID int64) (bool, error) {
 	var result bson.M
 	err := findOne(disableColl, bson.M{"chat_id": chatID}).Decode(&result)
 	if err != nil {
 		if errors.Is(err, mongo.ErrNoDocuments) {
-			return true, nil // Chat not found
+			return true, nil // Chat not found in disabled list, so it is enabled
 		}
-		return true, fmt.Errorf("error while checking if chat is disabled: %w", err)
+		return false, fmt.Errorf("error while checking if chat is disabled: %w", err)
 	}
 
-	return false, nil
+	return false, nil // Chat found in disabled list, so it is disabled
 }
 
 // DisableApprove Disables auto-approving for a chat
 func DisableApprove(chatID int64) error {
-	isServed, err := IsDisabledChat(chatID)
+	enabled, err := IsApproveEnabled(chatID)
 	if err != nil {
 		return err
 	}
 
-	if isServed {
+	if !enabled {
 		return nil // Already disabled
 	}
 
@@ -211,11 +211,11 @@ func DisableApprove(chatID int64) error {
 
 // EnableApprove Enables auto-approving for a chat
 func EnableApprove(chatID int64) error {
-	isServed, err := IsDisabledChat(chatID)
+	enabled, err := IsApproveEnabled(chatID)
 	if err != nil {
 		return err
 	}
-	if !isServed {
+	if enabled {
 		return nil // Already enabled
 	}
 

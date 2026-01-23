@@ -12,10 +12,12 @@ import (
 )
 
 var (
-	Token   string
-	OwnerId int64
-	DbUrl   string
-	DbName  string
+	Token      string
+	OwnerId    int64
+	DbUrl      string
+	DbName     string
+	WebhookUrl string
+	Port       string
 )
 
 func LoadEnv() error {
@@ -25,6 +27,8 @@ func LoadEnv() error {
 	DbName = os.Getenv("DB_NAME")
 	Token = os.Getenv("TOKEN")
 	OwnerId = toInt64(os.Getenv("OWNER_ID"))
+	WebhookUrl = os.Getenv("WEBHOOK_URL")
+	Port = os.Getenv("PORT")
 
 	if Token == "" {
 		return errors.New("bot token required; set TOKEN env variable")

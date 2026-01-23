@@ -33,19 +33,44 @@ func main() {
 	updater := ext.NewUpdater(modules.Dispatcher, nil)
 	allowedUpdates := []string{gotgbot.UpdateTypeMessage, gotgbot.UpdateTypeCallbackQuery, gotgbot.UpdateTypeChannelPost, gotgbot.UpdateTypeChatJoinRequest}
 
-	err = updater.StartPolling(bot, &ext.PollingOpts{
-		DropPendingUpdates: true,
-		GetUpdatesOpts: &gotgbot.GetUpdatesOpts{
-			Timeout:        9,
-			AllowedUpdates: allowedUpdates,
-			RequestOpts: &gotgbot.RequestOpts{
-				Timeout: time.Second * 10,
-			},
-		},
-	})
+	if config.WebhookUrl != "" {
+		port := config.Port
+		if port == "" {
+			port = "8080"
+		}
+		webhookOpts := ext.WebhookOpts{
+			ListenAddr: ":" + port,
+		}
 
-	if err != nil {
-		log.Fatal("failed to start polling:", err)
+		err = updater.StartWebhook(bot, config.Token, webhookOpts)
+		if err != nil {
+			log.Fatal("failed to start webhook:", err)
+		}
+
+		err = updater.SetAllBotWebhooks(config.WebhookUrl, &gotgbot.SetWebhookOpts{
+			MaxConnections:     100,
+			DropPendingUpdates: true,
+			AllowedUpdates:     allowedUpdates,
+		})
+		if err != nil {
+			log.Fatal("failed to set webhook:", err)
+		}
+		log.Printf("Webhook started on port %s", port)
+	} else {
+		err = updater.StartPolling(bot, &ext.PollingOpts{
+			DropPendingUpdates: true,
+			GetUpdatesOpts: &gotgbot.GetUpdatesOpts{
+				Timeout:        9,
+				AllowedUpdates: allowedUpdates,
+				RequestOpts: &gotgbot.RequestOpts{
+					Timeout: time.Second * 10,
+				},
+			},
+		})
+
+		if err != nil {
+			log.Fatal("failed to start polling:", err)
+		}
 	}
 
 	log.Printf("Bot started as %s", bot.Username)

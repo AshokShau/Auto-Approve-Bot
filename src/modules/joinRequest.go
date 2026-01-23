@@ -30,8 +30,8 @@ func joinRequest(b *gotgbot.Bot, ctx *ext.Context) error {
 		return fmt.Errorf("[joinRequest] failed to send join request message: %w", err)
 	}
 
-	approveStats, _ := db.IsDisabledChat(chat.Id)
-	if !approveStats {
+	enabled, _ := db.IsApproveEnabled(chat.Id)
+	if !enabled {
 		return ext.EndGroups
 	}
 
