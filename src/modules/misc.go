@@ -1,5 +1,5 @@
 /*
- * Copyright © 2024 AshokShau <github.com/AshokShau>
+ * Copyright (c) 2026. AshokShau <github.com/AshokShau>
  */
 
 package modules

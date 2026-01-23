@@ -1,22 +1,28 @@
 /*
- * Copyright © 2024 AshokShau <github.com/AshokShau>
+ * Copyright (c) 2026. AshokShau <github.com/AshokShau>
  */
 
 package main
 
 import (
-	"github.com/AshokShau/Auto-Approve-Bot/Telegram/config"
-	"github.com/AshokShau/Auto-Approve-Bot/Telegram/modules"
-	"github.com/PaulSonOfLars/gotgbot/v2"
 	"log"
 	"time"
+
+	"github.com/AshokShau/Auto-Approve-Bot/src/config"
+	"github.com/AshokShau/Auto-Approve-Bot/src/db"
+	"github.com/AshokShau/Auto-Approve-Bot/src/modules"
+	"github.com/PaulSonOfLars/gotgbot/v2"
 
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
 )
 
 func main() {
-	if config.Token == "" {
-		log.Fatal("Bot Token required")
+	if err := config.LoadEnv(); err != nil {
+		log.Fatal(err)
+	}
+
+	if err := db.Connect(); err != nil {
+		log.Fatal(err)
 	}
 
 	bot, err := gotgbot.NewBot(config.Token, nil)
@@ -44,6 +50,5 @@ func main() {
 
 	log.Printf("Bot started as %s", bot.Username)
 	_, _ = bot.SendMessage(config.OwnerId, "Bot started;", nil)
-
 	updater.Idle()
 }

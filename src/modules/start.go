@@ -1,16 +1,16 @@
 /*
- * Copyright © 2024 AshokShau <github.com/AshokShau>
+ * Copyright (c) 2026. AshokShau <github.com/AshokShau>
  */
 
 package modules
 
 import (
 	"fmt"
-	"github.com/AshokShau/Auto-Approve-Bot/Telegram/db"
+	"time"
+
+	"github.com/AshokShau/Auto-Approve-Bot/src/db"
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
-	"github.com/go-faster/errors"
-	"time"
 )
 
 var (
@@ -41,10 +41,10 @@ func start(b *gotgbot.Bot, ctx *ext.Context) error {
 
 	_, err := b.SendPhoto(msg.Chat.Id, gotgbot.InputFileByURL("https://graph.org/file/32166f1230f0a4368438f.jpg"), &gotgbot.SendPhotoOpts{Caption: startMessage, ReplyMarkup: button, HasSpoiler: true, ProtectContent: true})
 	if err != nil {
-		return errors.Wrap(err, "[start]failed to send message")
+		return fmt.Errorf("[start]failed to send message: %w", err)
 	}
 
-	if msg.Chat.Type == "private" {
+	if msg.Chat.Type == gotgbot.ChatTypePrivate {
 		_ = db.AddServedUser(msg.Chat.Id)
 	} else {
 		_ = db.AddServedChat(msg.Chat.Id)
@@ -59,7 +59,7 @@ func ping(b *gotgbot.Bot, ctx *ext.Context) error {
 
 	rest, err := msg.Reply(b, "<code>Pinging</code>", &gotgbot.SendMessageOpts{ParseMode: "HTML"})
 	if err != nil {
-		return errors.Wrap(err, "[Ping] failed to send message")
+		return fmt.Errorf("[Ping] failed to send message: %w", err)
 	}
 
 	// Calculate latency
@@ -74,7 +74,7 @@ func ping(b *gotgbot.Bot, ctx *ext.Context) error {
 
 	_, _, err = rest.EditText(b, responseText, nil)
 	if err != nil {
-		return errors.Wrap(err, "[Ping] failed to edit message")
+		return fmt.Errorf("[Ping] failed to edit message: %w", err)
 	}
 
 	return ext.EndGroups
