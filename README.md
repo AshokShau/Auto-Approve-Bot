@@ -57,21 +57,6 @@ go build
 sudo ./Auto-Approve-Bot
 ```
 
-## Deploy on Vercel
-
-* Deploy the bot on Vercel with the following steps:
-* Fork this repository 🍴
-* Login your [Vercel](https://vercel.com/) account
-* Go to your [Add New Project](https://vercel.com/new)
-* Choose the repository you forked
-* Configure the environment variables: `DB_URI` [MongoDB](https://www.mongodb.com/)
-* Tap on Deploy
-* After deployment, visit the deployed URL & Connect your bot with the deployed URL.
-
-* Start the bot by sending `/start` command to the bot.
-* Congratulations 🎉 Enjoy the bot 🌟 if you have any questions, join the [support Channel](https://t.me/FallenProjects)
-  🤗
-
 ## Usage
 
 1. **Start the bot**: Start the bot by sending `/start` command to the bot.
