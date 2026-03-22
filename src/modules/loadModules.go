@@ -1,18 +1,19 @@
 /*
- * Copyright © 2024 Abishnoi69 <github.com/Abishnoi69>
+ * Copyright (c) 2026. AshokShau <github.com/AshokShau>
  */
 
 package modules
 
 import (
 	"fmt"
-	"github.com/Abishnoi69/Auto-Approve-Bot/Telegram/config"
+	"html"
+
+	"github.com/AshokShau/Auto-Approve-Bot/src/config"
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext/handlers"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext/handlers/filters/callbackquery"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext/handlers/filters/chatjoinrequest"
-	"html"
 )
 
 func errorHandler(bot *gotgbot.Bot, _ *ext.Context, err error) ext.DispatcherAction {
