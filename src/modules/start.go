@@ -62,14 +62,15 @@ func ping(b *gotgbot.Bot, ctx *ext.Context) error {
 		return fmt.Errorf("[Ping] failed to send message: %w", err)
 	}
 
-	// Calculate latency
 	elapsedTime := time.Since(startTime)
-
-	// Calculate uptime
 	uptime := time.Since(StartTime)
 	formattedUptime := getFormattedDuration(uptime)
 
-	location, _ := time.LoadLocation("Asia/Kolkata")
+	location := time.UTC
+	if loadedLocation, err := time.LoadLocation("Asia/Kolkata"); err == nil {
+		location = loadedLocation
+	}
+
 	responseText := fmt.Sprintf("Pinged in %vms (Latency: %.2fs) at %s\n\nUptime: %s", elapsedTime.Milliseconds(), elapsedTime.Seconds(), time.Now().In(location).Format(time.RFC1123), formattedUptime)
 
 	_, _, err = rest.EditText(b, responseText, nil)
